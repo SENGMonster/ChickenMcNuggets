@@ -3,5 +3,7 @@ class PollController < ApplicationController
   end
 
   def vote
+    
+     @poll=Poll.find(params[:id])
   end
 end
