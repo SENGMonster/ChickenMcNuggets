@@ -1,2 +1,5 @@
-<h1>Poll#vote</h1>
-<p>Find me in app/views/poll/vote.html.erb</p>
+%h1=@poll.title
+%p=@poll.questin
+ 
+-@poll.answer_possibilities.each do |a|
+  %p=a.value 
