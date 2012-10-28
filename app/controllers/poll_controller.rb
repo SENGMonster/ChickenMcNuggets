@@ -3,7 +3,10 @@ class PollController < ApplicationController
   end
 
   def vote
-    
-     @poll=Poll.find(params[:id])
+     @poll=Poll.find(params[:id])     
+  end
+  
+  def process_vote
+    @answer = Answer.new
   end
 end
