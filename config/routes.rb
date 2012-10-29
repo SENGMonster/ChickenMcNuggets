@@ -12,6 +12,8 @@ Chickenmcnuggets::Application.routes.draw do
   get "home/impressum"
 
   get "home/faq"
+  
+  post "poll/process_vote"
 
   ActiveAdmin.routes(self)
 

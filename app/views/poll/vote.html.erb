@@ -1,17 +1,5 @@
 <h1>Umfrage: <%= @poll.questin %></h1>
 
-<%= form_for @poll, :url => { :action => "vote" } do |f| %>
-
-	<% @poll.answer_possibilities.each do |answer_posibility| %>
-		<div class="field">
-			<p><%= radio_button_tag(:value, "value") %>
-			<%= label_tag( answer_posibility.value) %></p>
-		</div>			
-	<% end %>
-
-	<div class="actions">
-	<%= f.submit "Speichern" %> 
-	</div>
-<% end %>
+<%= render 'form' %>
 
 
