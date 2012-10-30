@@ -1,0 +1,41 @@
+ <%= semantic_form_for [:admin, @poll], :builder => ActiveAdmin::FormBuilder do |f|
+
+    puts f.object.errors.inspect
+        #puts f.object.errors.inspect
+
+
+      f.inputs do
+      #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
+        f.input :title
+        f.input :questin
+        f.input :exp_date
+        f.input :category 
+        #f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
+        # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
+      end
+
+      f.has_many :answer_possibilities do |item|
+        item.input :value
+      end
+
+      # f.has_many :termines do |item|
+      #   item.input :start_date
+      #   item.input :end_date
+      #   item.input :amount
+      #   item.input :address
+      # end
+
+      # f.has_many :prices do |item|
+      #   item.input :price
+      #   item.input :priceclass
+      # end
+
+      # f.has_many :pictures do |item|
+      #   item.input :name
+      #   item.input :item, as: :file
+      # end
+
+      
+      f.buttons
+    end 
+      %>

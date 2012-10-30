@@ -2,6 +2,7 @@ class PollController < ApplicationController
   before_filter :check_session, :only => [:vote]
   
   def show
+    ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
     @answers = Array.new
     @answer_possibilities = @poll.answer_possibilities
