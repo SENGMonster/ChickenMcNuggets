@@ -1,5 +1,5 @@
 class PollController < ApplicationController
-  before_filter :check_session, :only => [:vote]
+  #before_filter :check_session, :only => [:vote]
   
   def show
     @poll=Poll.find(params[:id])
@@ -21,7 +21,22 @@ class PollController < ApplicationController
      @answer = Answer.new     
   end
 
-  def process_vote
+  def process_multiple_vote  
+    @poll = Poll.find(params[:poll])
+    @answer_ids = params[:answer_ids]
+    
+    @answer_ids.each do |answer_id|
+      @answer = Answer.new(params[:answer])
+      @answer.answer_possibility_id = AnswerPossibility.find(answer_id).id
+      @answer.value =AnswerPossibility.find(answer_id).value
+      @answer.save      
+    end
+    session[@poll.id] = 1
+    redirect_to :action => "show", :id => @poll.id
+    
+  end
+
+  def process_single_vote
     @answer = Answer.new(params[:answer])
     @poll = Poll.find(params[:poll])
     @answer_possibility = AnswerPossibility.find(params[:answer][:id])

@@ -13,7 +13,9 @@ Chickenmcnuggets::Application.routes.draw do
 
   get "home/faq"
   
-  post "poll/process_vote"
+  post "poll/process_single_vote"
+  
+  post "poll/process_multiple_vote"
 
   ActiveAdmin.routes(self)
 
