@@ -1,4 +1,5 @@
-<h1>Umfrage: <%= @poll.questin %></h1>
+<h1>Titel: <%= @poll.title %></h1>
+<h2>Umfrage: <%= @poll.questin %></h2>
 <% if @poll.poll_type.name == "single choice"%>
 	<%= render 'single_choice_form' %>
 <% end %>
@@ -6,7 +7,7 @@
 	<%= render 'multiple_choice_form' %>
 <% end %>
 <% if @poll.poll_type.name == "open"  %>
-	<p>Open Text</p>
+	<%= render 'open_form' %>
 <% end %>
 
 

@@ -53,6 +53,24 @@ class PollController < ApplicationController
       end
     end    
   end
+
+  def process_open_vote
+    @answer = Answer.new(params[:answer])
+    @poll = Poll.find(params[:poll])
+    @answer.answer_possibility_id = nil
+    @answer.poll_id = @poll.id
+    session[@poll.id] = 1
+    
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to :action => "show", :id => @poll.id }
+        format.json { render json: @poll, status: :created, location: @poll }
+      else
+        format.html { render action: "vote" }
+        format.json { render json: @poll.errors, status: :unprocessable_entity }
+      end
+    end    
+  end
   
   def check_session
     @poll=Poll.find(params[:id])

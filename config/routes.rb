@@ -16,6 +16,8 @@ Chickenmcnuggets::Application.routes.draw do
   post "poll/process_single_vote"
   
   post "poll/process_multiple_vote"
+  
+  post "poll/process_open_vote"
 
   ActiveAdmin.routes(self)
 

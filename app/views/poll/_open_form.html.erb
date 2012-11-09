@@ -1,0 +1,12 @@
+<%= form_for @answer, :url => { :action => "process_open_vote", :poll => @poll } do |f| %>
+
+
+	<div class="field">
+		<p><%= f.label "Text:" %>
+		<%= f.text_area :value %></p>			
+	</div>			
+
+	<div class="actions">
+	<%= f.submit "Abstimmen" %> 
+	</div>
+<% end %>

@@ -2,7 +2,7 @@
 
 	<% @poll.answer_possibilities.each do |answer_possibility| %>
 		<div class="field">
-			<%= label_tag 'answer_ids[]', answer_possibility.value %>
+			<%= label_tag 'vote_label', answer_possibility.value %>
 			<%= check_box_tag 'answer_ids[]', answer_possibility.id %>					
 		</div>			
 	<% end %>
