@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
  
   def prepend_view_path_if_mobile
     if mobile_request?
-      prepend_view_path Rails.root + 'app' + 'mobile_views'
+      prepend_view_path Rails.root + 'app' + 'views' + 'mobile_poll'
     end
   end
  
