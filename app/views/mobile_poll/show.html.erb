@@ -1,0 +1,24 @@
+<h1>Titel: <%= @poll.title %></h1>
+<h2>Umfrageergebnisse: <%= @poll.questin %></h2>
+
+<% if @poll.poll_type.name == "open"%>
+	<% @poll.answers.each do |answer| %>
+		<% if @poll.id == answer.poll_id%>
+			<li><%= answer.value %></li>
+		<% end %>
+	<%end %>
+	
+<% else %>
+	<% @poll.answer_possibilities.each do |answer_possibility| %>
+		<p>
+			<%= answer_possibility.value %>
+			<% @count = 0 %>
+			<% @answers.each do |answer| %>
+				<% if (answer.answer_possibility_id == answer_possibility.id) %>
+					<% @count+= 1 %>
+				<% end%>
+			<% end %>
+			<%= @count %>
+		</p>
+	<% end %>
+<% end %>
