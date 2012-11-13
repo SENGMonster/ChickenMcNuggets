@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2012261014125559) do
+ActiveRecord::Schema.define(:version => 2012271084411111) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -78,12 +78,13 @@ ActiveRecord::Schema.define(:version => 2012261014125559) do
 
   create_table "polls", :force => true do |t|
     t.string   "title"
-    t.string   "questin"
+    t.string   "question"
     t.date     "exp_date"
     t.integer  "user_id"
     t.integer  "poll_type_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "category_id"
   end
 
 end

@@ -50,6 +50,7 @@ GEM
       thor
     builder (3.0.4)
     cocaine (0.4.2)
+    coderay (1.0.7)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -78,6 +79,7 @@ GEM
       json (>= 1.4.6)
     gherkin (2.11.5-x86-mingw32)
       json (>= 1.4.6)
+    googlecharts (1.6.8)
     haml (3.1.7)
     has_scope (0.5.1)
     hike (1.2.1)
@@ -102,6 +104,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    method_source (0.8)
     mime-types (1.19)
     multi_json (1.3.7)
     orm_adapter (0.4.0)
@@ -114,6 +117,15 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    pry (0.9.10-x86-mingw32)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+      win32console (~> 1.3)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -154,6 +166,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    slop (3.3.2)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -171,6 +184,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    win32console (1.3.2-x86-mingw32)
 
 PLATFORMS
   ruby
@@ -181,10 +195,12 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber
   devise
+  googlecharts
   haml
   jquery-rails
   multi_json
   paperclip
+  pry
   rails (= 3.2.3)
   rspec
   sass-rails (~> 3.2.3)
