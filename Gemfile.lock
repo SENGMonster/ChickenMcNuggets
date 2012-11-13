@@ -183,6 +183,7 @@ DEPENDENCIES
   devise
   haml
   jquery-rails
+  multi_json
   paperclip
   rails (= 3.2.3)
   rspec

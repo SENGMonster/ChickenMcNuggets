@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'activeadmin'
 gem 'paperclip'
+gem 'multi_json'
 
 group :test do
   gem 'rspec'
