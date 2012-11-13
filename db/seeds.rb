@@ -9,3 +9,5 @@
 PollType.create(name: 'single choice')
 PollType.create(name: 'multiple choice')
 PollType.create(name: 'open')
+
+AdminUser.create(password: 'password', password_confirmation: 'password', email: 'admin@example.com')
