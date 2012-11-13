@@ -5,19 +5,13 @@ class PollController < ApplicationController
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
-    @answers = Array.new
-    @answer_possibilities = @poll.answer_possibilities
-    
-    @chart_url=Gchart.pie_3d(:data => [20, 35, 45])
-
-    Answer.all.each do |answer|
-      @answer_possibilities.each do |answer_possibility|
-        if answer_possibility.id == answer.answer_possibility_id
-          @answers << answer
-        end
-      end
+    data=[]
+    labels=[]
+    @poll.answer_possibilities.each do |p|
+      data << p.answers.count
+      labels << p.value + " (" + p.answers.count.to_s + ")"
     end
-    
+    @chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )        
   end
 
   def vote
