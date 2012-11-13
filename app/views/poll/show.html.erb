@@ -2,12 +2,15 @@
 <h2> <%= @poll.question %> </h2>
 
 <% if @poll.poll_type.name == "open"%>
-	<% @poll.answers.each do |answer| %>
-			<li><%= answer.value %></li>		
-	<%end %>
+	<ul>
+		<% @poll.answers.each do |answer| %>
+				<li><%= answer.value %></li>		
+		<%end %>
+	</ul>
 	
 <% else %>
 	<img src="<%= @chart_url  %>" /> 
+	<img src="<%= @bar_url  %>" /> 
 	<table>
 		<% @poll.answer_possibilities.each do |answer_possibility| %>
 			<tr>

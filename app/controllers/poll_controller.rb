@@ -5,13 +5,16 @@ class PollController < ApplicationController
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
+
     data=[]
     labels=[]
     @poll.answer_possibilities.each do |p|
       data << p.answers.count
       labels << p.value + " (" + p.answers.count.to_s + ")"
     end
-    @chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )        
+
+    @chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )
+    @bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
   end
 
   def vote
@@ -40,7 +43,7 @@ class PollController < ApplicationController
     @poll = Poll.find(params[:poll])
     answer_possibility = AnswerPossibility.find(params[:answer][:id])
     answer.answer_possibility_id = answer_possibility.id
-    answer.value = @answer_possibility.value
+    answer.value = answer_possibility.value
     session[@poll.id] = 1    
 
     respond_to do |format|
