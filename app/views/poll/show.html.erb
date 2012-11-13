@@ -1,5 +1,5 @@
 <h1>TITEL: <%= @poll.title %></h1>
-<h2>Umfrageergebnisse: <%= @poll.questin %></h2>
+<h2>Umfrageergebnisse: <%= @poll.question %></h2>
 
 <% if @poll.poll_type.name == "open"%>
 	<% @poll.answers.each do |answer| %>
