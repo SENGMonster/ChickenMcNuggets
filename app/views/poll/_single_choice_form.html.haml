@@ -1,8 +1,10 @@
-= form_for @answer, :url => { :action => "process_single_vote", :poll => @poll } do |f| 
 
-  -@poll.answer_possibilities.each do |answer_possibility|
-    .field
-      %p=f.label(answer_possibility.value)
-      %p=f.radio_button :id, answer_possibility.id
-  .actions
-    =f.submit "Abstimmen"
+= form_for @answer, :url => { :action => "process_single_vote", :poll => @poll } do |f| 
+	%fieldset{:"data-role"=>"controlgroup", :class=>"ui-mobile"}
+		-@poll.answer_possibilities.each do |answer_possibility|
+			.field
+				-radio_id="radio-choice-"+answer_possibility.id.to_s
+				%input{:"type"=>"radio", :"name"=>"radio-choice", :"id"=> radio_id, :"value"=>answer_possibility.id}
+				%label{:"for"=>radio_id}=answer_possibility.value
+	.actions
+		=f.submit "Abstimmen"
