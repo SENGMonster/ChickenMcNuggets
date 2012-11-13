@@ -1,6 +1,8 @@
 <h1>TITEL: <%= @poll.title %></h1>
 <h2>Umfrageergebnisse: <%= @poll.question %></h2>
 
+<img src="<%= @chart_url  %>" /> 
+
 <% if @poll.poll_type.name == "open"%>
 	<% @poll.answers.each do |answer| %>
 		<% if @poll.id == answer.poll_id%>
@@ -22,3 +24,5 @@
 		</p>
 	<% end %>
 <% end %>
+
+

@@ -1,3 +1,4 @@
+require 'gchart'
 class PollController < ApplicationController
   #before_filter :check_session, :only => [:vote]
   
@@ -7,6 +8,8 @@ class PollController < ApplicationController
     @answers = Array.new
     @answer_possibilities = @poll.answer_possibilities
     
+    @chart_url=Gchart.pie_3d(:data => [20, 35, 45])
+
     Answer.all.each do |answer|
       @answer_possibilities.each do |answer_possibility|
         if answer_possibility.id == answer.answer_possibility_id
@@ -32,6 +35,7 @@ class PollController < ApplicationController
       answer.value =AnswerPossibility.find(answer_id).value
       answer.save      
     end
+
     session[@poll.id] = 1
     redirect_to :action => "show", :id => @poll.id
     
@@ -43,7 +47,8 @@ class PollController < ApplicationController
     answer_possibility = AnswerPossibility.find(params[:answer][:id])
     answer.answer_possibility_id = answer_possibility.id
     answer.value = @answer_possibility.value
-    session[@poll.id] = 1
+    session[@poll.id] = 1    
+
     respond_to do |format|
       if answer.save
         format.html { redirect_to :action => "show", :id => @poll.id }
