@@ -1,0 +1,13 @@
+<%= form_tag :action => "process_multiple_vote", :poll => @poll do %>
+
+	<% @poll.answer_possibilities.each do |answer_possibility| %>
+		<div class="field">
+			<%= label_tag 'vote_label', answer_possibility.value %>
+			<%= check_box_tag 'answer_ids[]', answer_possibility.id %>					
+		</div>			
+	<% end %>
+
+	<div class="actions">
+	<%= submit_tag "Abstimmen" %> 
+	</div>
+<% end %>

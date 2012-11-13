@@ -6,17 +6,19 @@
 
       f.inputs do
       #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
+        f.input :poll_type
         f.input :title
-        f.input :questin
+        f.input :question
         f.input :exp_date
-        f.input :category 
+        f.input :category
+        
         #f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
         # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
       end
 
-      f.has_many :answer_possibilities do |item|
-        item.input :value
-      end
+      # f.has_many :answer_possibilities do |item|
+      #   item.input :value
+      # end
 
       # f.has_many :termines do |item|
       #   item.input :start_date

@@ -1,6 +1,13 @@
-%h1="Umfrage:"
-  = @poll.questin 
+%h1= @poll.title
+%h2= @poll.question
 
-  = render 'form' 
+- if @poll.poll_type.name == "single choice"
+  = render 'single_choice_form' 
+
+- if @poll.poll_type.name == "multiple choice"  
+  = render 'multiple_choice_form' 
+
+- if @poll.poll_type.name == "open"  
+  = render 'open_form' 
 
 

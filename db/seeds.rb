@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+PollType.create(name: 'single choice')
+PollType.create(name: 'multiple choice')
+PollType.create(name: 'open')
