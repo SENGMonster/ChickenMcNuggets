@@ -59,7 +59,6 @@ class PollController < ApplicationController
 
   def process_open_vote
     answer = Answer.new(params[:answer])
-    binding.pry
     @poll = Poll.find(params[:poll])
     answer.poll_id = @poll.id
     session[@poll.id] = 1
