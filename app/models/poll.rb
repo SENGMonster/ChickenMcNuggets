@@ -1,5 +1,5 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :title, :question, :exp_date, :user_id, :poll_type_id, :category_id, :answer_possibilities_attributes
+  attr_accessible :title, :question, :exp_date, :user_id, :poll_type_id, :category_id, :answer_possibilities_attributes, :chart_type
   has_many :answer_possibilities
   belongs_to :poll_type
   belongs_to :category
