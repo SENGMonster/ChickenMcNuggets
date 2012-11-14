@@ -12,10 +12,10 @@ class PollController < ApplicationController
       data << p.answers.count
       labels << p.value + " (" + p.answers.count.to_s + ")"
     end
-    #on_class = "Gchart"
-    #@chart_url= on_class.constantize.send(@poll.chart_type)
-    @chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )
-    @bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
+    on_class = "Gchart"
+    @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '400x200',:data => data, :labels => labels )
+    #@chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )
+    #@bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
   end
 
   def vote
