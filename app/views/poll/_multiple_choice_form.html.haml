@@ -1,9 +1,12 @@
 = form_tag :action => "process_multiple_vote", :poll => @poll do 
-  - @poll.answer_possibilities.each do |answer_possibility| 
-    .field
-      = label_tag 'vote_label', answer_possibility.value 
-      = check_box_tag 'answer_ids[]', answer_possibility.id 
+	%fieldset{:"data-role"=>"controlgroup", :class=>"ui-mobile"}
+	  - @poll.answer_possibilities.each do |answer_possibility| 
+	    .field
+	      -radio_id="checkbox-"+answer_possibility.id.to_s
+				%input{:"type"=>"checkbox", :"id"=> 'answer_ids[]', :"value"=>answer_possibility.id}
+				%label{:"for"=>'answer_ids[]', :"id"=>'vote_label'}=answer_possibility.value
+
+			
+	  .actions
+	    = submit_tag "Abstimmen" 
 		
-  .actions
-    = submit_tag "Abstimmen" 
-	
