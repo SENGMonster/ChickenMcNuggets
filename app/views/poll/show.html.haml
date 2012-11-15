@@ -1,6 +1,9 @@
 %h1= @poll.title 
 %h2= @poll.question
 
+- if @poll.exp_date <= Date.today
+	%h3.red= "Diese Umfrage ist abgelaufen. Abstimmen ist nicht mehr möglich."
+
 - if @poll.poll_type.name == "open"
 	%ul
 		- @poll.answers.each do |answer| 

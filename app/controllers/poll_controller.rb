@@ -1,6 +1,7 @@
 require 'gchart'
 class PollController < ApplicationController
   #before_filter :check_session, :only => [:vote]
+  before_filter :check_exp_date, :only => [:vote]
   
   def show
     ##https://github.com/mattetti/googlecharts
@@ -80,6 +81,16 @@ class PollController < ApplicationController
     if session[@poll.id]
       redirect_to :action => "show", :id => @poll.id
     end
+  end
+
+  def check_exp_date
+    @poll=Poll.find(params[:id])
+    current_date = Date.today
+    if @poll.exp_date <= current_date
+      redirect_to :action => "show", :id => @poll.id
+    end
+    
+
   end
   
 end
