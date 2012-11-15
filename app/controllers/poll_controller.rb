@@ -42,7 +42,7 @@ class PollController < ApplicationController
   def process_single_vote
     answer = Answer.new(params[:answer])
     @poll = Poll.find(params[:poll])
-    answer_possibility = AnswerPossibility.find(params[:answer][:id])
+    answer_possibility = AnswerPossibility.find(params[:"radio-choice"])
     answer.answer_possibility_id = answer_possibility.id
     answer.value = answer_possibility.value
     session[@poll.id] = 1    
