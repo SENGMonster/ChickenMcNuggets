@@ -4,6 +4,6 @@
 		-@poll.answer_possibilities.each do |answer_possibility|
 			-radio_id="radio-choice-"+answer_possibility.id.to_s
 			%input{:"type"=>"radio", :"name"=>"radio-choice", :"id"=> radio_id, :"value"=>answer_possibility.id}
-			%label{:"for"=>radio_id}=answer_possibility.value
+			%label{:"for"=>radio_id, :"data-icon"=>"arrow-r", :"style"=>"text-align: center"}=answer_possibility.value
 	.actions
 		=f.submit "Abstimmen"
