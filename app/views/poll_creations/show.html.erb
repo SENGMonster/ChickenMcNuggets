@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Poll type:</b>
+  <%= @poll_creation.poll_type_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @poll_creation.category_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @poll_creation.title %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%= @poll_creation.question %>
+</p>
+
+<p>
+  <b>Exp date:</b>
+  <%= @poll_creation.exp_date %>
+</p>
+
+<p>
+  <b>Chart type:</b>
+  <%= @poll_creation.chart_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_poll_creation_path(@poll_creation) %> |
+<%= link_to 'Back', poll_creations_path %>
