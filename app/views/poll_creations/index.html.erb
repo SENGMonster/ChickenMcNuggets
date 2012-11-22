@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Poll type</th>
-    <th>Category</th>
+    <th>Category</th> 
     <th>Title</th>
     <th>Question</th>
     <th>Exp date</th>
@@ -13,7 +13,7 @@
     <th></th>
   </tr>
 
-<% @poll_creations.each do |poll_creation| %>
+<% @polls.each do |poll_creation| %>
   <tr>
     <td><%= poll_creation.poll_type_id %></td>
     <td><%= poll_creation.category_id %></td>
@@ -21,9 +21,9 @@
     <td><%= poll_creation.question %></td>
     <td><%= poll_creation.exp_date %></td>
     <td><%= poll_creation.chart_type %></td>
-    <td><%= link_to 'Show', poll_creation %></td>
-    <td><%= link_to 'Edit', edit_poll_creation_path(poll_creation) %></td>
-    <td><%= link_to 'Destroy', poll_creation, confirm: 'Are you sure?', method: :delete %></td>
+    <td> link_to 'Show', poll_creation %></td>
+    <td> link_to 'Edit', edit_poll_creation_path(poll_creation) %></td>
+    <td> link_to 'Destroy', poll_creation, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
