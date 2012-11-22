@@ -8,16 +8,20 @@
   <meta name="viewport" content="width=device-width" initial-scale=1, maximum-scale=1 />
 </head>
 <body>
-	<div data-role='page' id='poll'>
-		<div data-role='content'>
-			<%= yield %>
-		</div>
+	<% if controller.controller_name == "poll_creations" %>
+		<%= yield %>
+	<% else %>
+		<div data-role='page' id='poll'>
+			<div data-role='content'>
+				<%= yield %>
+			</div>
 
-		<div data-role="footer" data-id="footernav" data-tap-toogle="false" data-position="fixed" data-theme="b">
-			<ul>
-				<li><a href="" data-icon="star">Refresh</a></li>
-			</ul>
+			<div data-role="footer" data-id="footernav" data-tap-toogle="false" data-position="fixed" data-theme="b">
+				<ul>
+					<li><a href="" data-icon="star">Refresh</a></li>
+				</ul>
+			</div>
 		</div>
-	</div>
+	<% end %>
 </body>
 </html>

@@ -1,41 +1,25 @@
-<%= form_for(@poll_creation) do |f| %>
-  <% if @poll_creation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@poll_creation.errors.count, "error") %> prohibited this poll_creation from being saved:</h2>
+ <%= semantic_form_for [@poll], :url => url_for(:controller => 'poll_creations', :action => 'create'), :builder => ActiveAdmin::FormBuilder do |f|
 
-      <ul>
-      <% @poll_creation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    puts f.object.errors.inspect
+        #puts f.object.errors.inspect
 
-  <div class="field">
-    <%= f.label :poll_type_id %><br />
-    <%= f.number_field :poll_type_id %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :exp_date %><br />
-    <%= f.date_select :exp_date %>
-  </div>
-  <div class="field">
-    <%= f.label :chart_type %><br />
-    <%= f.text_field :chart_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+      f.inputs do
+      #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
+        f.input :poll_type
+        f.input :title
+        f.input :question
+        f.input :exp_date
+        f.input :category
+        
+        #f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
+        # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
+      end
+
+      f.inputs do
+        f.input :chart_type,  :as => :select, :collection => ["line", "line_xy", "sparkline", "scatter", "bar", "venn", "pie",  "pie_3d", "google meter"]
+      end
+      
+      f.buttons
+    end 
+      %>
