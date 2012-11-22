@@ -3,10 +3,7 @@
 <head>
   <title>Chickenmcnuggets</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
   <%= javascript_include_tag "application" %>
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width" initial-scale=1, maximum-scale=1 />
 </head>
@@ -14,6 +11,12 @@
 	<div data-role='page' id='poll'>
 		<div data-role='content'>
 			<%= yield %>
+		</div>
+
+		<div data-role="footer" data-id="footernav" data-tap-toogle="false" data-position="fixed" data-theme="b">
+			<ul>
+				<li><a href="" data-icon="star">Refresh</a></li>
+			</ul>
 		</div>
 	</div>
 </body>
