@@ -5,9 +5,7 @@ class PollCreationsController < ApplicationController
 
 	def new
 	    @poll = Poll.new
-	    3.times do
-	    	@poll.answer_possibilities.build
-	    end
+
 	    respond_to do |format|
 	      format.html # new.html.erb
 	      format.json { render json: @poll }
