@@ -1,4 +1,4 @@
-class PollCreationsController < ActionController::Base
+class PollCreationsController < ApplicationController
 	def index
 		@polls = Poll.all
 	end
