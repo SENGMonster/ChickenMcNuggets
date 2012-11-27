@@ -1,0 +1,15 @@
+<script type="text/javascript">
+
+function remove_fields(link) {
+  $(link).previous("input[type=hidden]").value = "1";
+  $(link).up(".fields").hide();
+}
+
+</script>
+
+<p class="fields">
+  <%= f.label :value, "Antwort" %><br />
+  <%= f.text_field :value %><br />
+  <%= link_to_remove_fields "remove", f %>
+</p>
+
