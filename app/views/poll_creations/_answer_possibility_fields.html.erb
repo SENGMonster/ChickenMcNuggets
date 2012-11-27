@@ -1,8 +1,9 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
 
 function remove_fields(link) {
-  $(link).previous("input[type=hidden]").value = "1";
-  $(link).up(".fields").hide();
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
 }
 
 </script>
