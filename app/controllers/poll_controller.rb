@@ -33,6 +33,10 @@ class PollController < ApplicationController
       answer = Answer.new(params[:answer])
       answer.answer_possibility_id = AnswerPossibility.find(answer_id).id
       answer.value =AnswerPossibility.find(answer_id).value
+      answer.os = RUBY_PLATFORM;
+      answer.browser = request.env['HTTP_USER_AGENT'];
+      answer.ip = request.env['REMOTE_ADDR'];
+      answer.poll_id = @poll.id
       answer.save      
     end
 
@@ -47,6 +51,10 @@ class PollController < ApplicationController
     answer_possibility = AnswerPossibility.find(params[:"radio-choice"])
     answer.answer_possibility_id = answer_possibility.id
     answer.value = answer_possibility.value
+    answer.os = RUBY_PLATFORM;
+    answer.browser = request.env['HTTP_USER_AGENT'];
+    answer.ip = request.env['REMOTE_ADDR'];
+    answer.poll_id = @poll.id
     session[@poll.id] = 1    
 
     respond_to do |format|
