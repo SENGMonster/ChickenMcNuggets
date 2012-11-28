@@ -1,5 +1,5 @@
 Chickenmcnuggets::Application.routes.draw do
-  resources :poll_creations
+  resources :poll_creations 
 
   get "poll/show"
 

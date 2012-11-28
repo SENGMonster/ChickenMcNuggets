@@ -26,5 +26,15 @@ class PollCreationsController < ApplicationController
 	  end
 	end
 
+  def destroy
+    @poll = Poll.find(params[:id])
+    @poll.destroy
+
+    respond_to do |format|
+      format.html { redirect_to poll_creations_path }
+      format.json { head :no_content }
+    end
+  end
+
 
 end

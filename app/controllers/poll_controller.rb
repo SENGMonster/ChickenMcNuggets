@@ -2,7 +2,8 @@ require 'gchart'
 class PollController < ApplicationController
   #before_filter :check_session, :only => [:vote]
   before_filter :check_exp_date, :only => [:vote]
-  
+
+ 
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
