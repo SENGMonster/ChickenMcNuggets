@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2012271084411115) do
+ActiveRecord::Schema.define(:version => 2012271084411116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 2012271084411115) do
     t.datetime "updated_at",   :null => false
     t.integer  "category_id"
     t.string   "chart_type"
+    t.date     "start_date"
   end
 
 end

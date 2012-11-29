@@ -1,5 +1,5 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :title, :question, :exp_date, :user_id, :poll_type_id, :category_id, :answer_possibilities_attributes, :chart_type
+  attr_accessible :title, :question, :exp_date, :user_id, :poll_type_id, :category_id, :answer_possibilities_attributes, :chart_type, :start_date
   has_many :answer_possibilities, :dependent => :destroy
   belongs_to :poll_type
   belongs_to :category
