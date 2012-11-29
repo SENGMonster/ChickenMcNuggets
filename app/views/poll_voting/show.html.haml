@@ -1,7 +1,7 @@
 %h1= @poll.title 
 %h2= @poll.question
 
-- if @poll.exp_date <= Date.today || @poll.start_date >= Date.today
+- if !(@poll.exp_date >= Date.today and @poll.start_date >= Date.today)
 	%h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
 
 - else 

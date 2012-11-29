@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
+	before_filter :authenticate_creator!
 	def index
-		@polls = Poll.all
+		@polls = Poll.where(user_id: current_creator.id)
 	end
 
 	def edit
@@ -35,20 +36,22 @@ class PollsController < ApplicationController
 
 	def create
 	  @poll = Poll.new(params[:poll])
-	  #binding.pry
+	  @poll.user_id = current_creator.id
+	
 
 	  respond_to do |format|
 	    if @poll.save
 
-		answer_possibilities = params[:poll][:answer_possibilities_attributes]
-		answer_possibilities.each do |k,v|
-			v.each do |k1,v1|
+			answer_possibilities = params[:poll][:answer_possibilities_attributes]
+			answer_possibilities.each do |k,v|
+				v.each do |k1,v1|
 		  		answerPossibility = AnswerPossibility.new
 		  		answerPossibility.value = v1
 		  		answerPossibility.poll_id = @poll.id
 		  		answerPossibility.save
-		  	end
-		end
+				end
+		  end
+
 
 	      format.html { redirect_to polls_path notice: 'Newsentry was successfully created.' }
 	      format.json { render json: @poll, status: :created, location: @poll }
