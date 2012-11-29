@@ -1,16 +1,9 @@
 %h1= @poll.title 
 %h2= @poll.question
 
-- if @poll.exp_date <= Date.today
-	%h3.red= "Diese Umfrage ist abgelaufen. Abstimmen ist nicht mehr möglich."
+- if @poll.exp_date <= Date.today || @poll.start_date >= Date.today
+	%h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
 
-- if @poll.poll_type.name == "open"
-	%ul
-		- @poll.answers.each do |answer| 
-			%li= answer.value
-		
-	
-	
 - else 
 	%img{ src: @chart_url } 
 	%img{ src: @bar_url } 
