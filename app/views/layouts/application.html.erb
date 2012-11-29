@@ -18,26 +18,29 @@
   <meta name="viewport" content="width=device-width" initial-scale=1, maximum-scale=1 /> 
 </head>
 <body>
+  <div class="menu">
+    <ul>
+      <li>
+        <% if creator_signed_in? %>
+        <%= link_to "Logout", destroy_creator_session_path, :method => :delete %>
+        <% else %>
+        <%= link_to "Login", new_creator_session_path %>
+        <% end %>
+      </li>
+
+      <li><%= link_to "PollCreation", polls_path %></li>
+      <li><%= link_to "Admin", "/admin" %></li>
+      <li><%= link_to 'Show' , poll_voting_show_path %></li>
+      <li><%= link_to 'Vote' , poll_voting_vote_path %></li>
+    </ul>
+  </div>
 	<% if controller.controller_name == "poll_voting" %>
-	<div data-role='page' id='poll'>
+	
+
+  <div data-role='page' id='poll'>
 		<div data-role='content'>
 
-    <div class="menu">
-      <ul>
-        <li>
-          <% if creator_signed_in? %>
-          <%= link_to "Logout", destroy_creator_session_path, :method => :delete %>
-          <% else %>
-          <%= link_to "Login", new_creator_session_path %>
-          <% end %>
-        </li>
 
-        <li><%= link_to "PollCreation", polls_path %></li>
-        <li><%= link_to "Admin", "/admin" %></li>
-        <li><%= link_to 'Show' , poll_voting_show_path %></li>
-        <li><%= link_to 'Vote' , poll_voting_vote_path %></li>
-      </ul>
-    </div>
 			<%= yield %>
 		</div>
 		<div data-role="footer" data-id="footernav" data-tap-toogle="false" data-position="fixed" data-theme="b">
