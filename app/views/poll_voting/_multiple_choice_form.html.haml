@@ -1,0 +1,11 @@
+= form_tag :action => "process_multiple_vote", :poll => @poll do 
+	%fieldset{:"data-role"=>"controlgroup", :class=>"ui-mobile"}
+		- @poll.answer_possibilities.each do |answer_possibility| 
+			-radio_id="checkbox-"+answer_possibility.id.to_s
+			%input{:"type"=>"checkbox", :"id"=> radio_id, :name=>'answer_ids[]', :"value"=>answer_possibility.id}
+			%label{:"for"=>radio_id, :"id"=>'vote_label'}=answer_possibility.value
+
+			
+	.actions
+		= submit_tag "Abstimmen" 
+		

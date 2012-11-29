@@ -1,0 +1,9 @@
+
+= form_for @answer, :url => { :action => "process_single_vote", :poll => @poll } do |f| 
+	%fieldset{:"data-role"=>"controlgroup"}
+		-@poll.answer_possibilities.each do |answer_possibility|
+			-radio_id="radio-choice-"+answer_possibility.id.to_s
+			%input{:"type"=>"radio", :"name"=>"radio-choice", :"id"=> radio_id, :"value"=>answer_possibility.id}
+			%label{:"for"=>radio_id}=answer_possibility.value
+	.actions
+		=f.submit "Abstimmen"

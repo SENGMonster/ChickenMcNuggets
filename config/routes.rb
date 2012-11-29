@@ -1,12 +1,9 @@
 Chickenmcnuggets::Application.routes.draw do
 
 
-  resources :poll_creations 
+  resources :polls
 
-  get "poll/show"
-
-  get "poll/vote"
-
+  
   get "home/index"
 
   get "home/polls"
@@ -17,11 +14,17 @@ Chickenmcnuggets::Application.routes.draw do
 
   get "home/faq"
   
-  post "poll/process_single_vote"
+
+
+  get "poll_voting/show"
+
+  get "poll_voting/vote"
+
+  post "poll_voting/process_single_vote"
   
-  post "poll/process_multiple_vote"
+  post "poll_voting/process_multiple_vote"
   
-  post "poll/process_open_vote"
+  post "poll_voting/process_open_vote"
 
   ActiveAdmin.routes(self)
 

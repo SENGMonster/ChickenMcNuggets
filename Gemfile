@@ -6,10 +6,10 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'pry', :group => :development
 gem 'googlecharts'
 
 gem 'devise'
+gem 'cancan'
 gem 'activeadmin'
 gem 'paperclip'
 gem 'multi_json'
@@ -34,6 +34,7 @@ end
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
+  gem 'pry'
 end
 
 gem 'jquery-rails'
