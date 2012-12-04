@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
 	before_filter :authenticate_creator!
 	def index
-		@polls = Poll.where(user_id: current_creator.id)
+		@polls = Poll.where(creator_id: current_creator.id)
 	end
 
 	def edit
@@ -36,7 +36,7 @@ class PollsController < ApplicationController
 
 	def create
 	  @poll = Poll.new(params[:poll])
-	  @poll.user_id = current_creator.id
+	  @poll.creator_id = current_creator.id
 	
 
 	  respond_to do |format|

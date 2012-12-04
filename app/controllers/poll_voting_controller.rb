@@ -28,15 +28,20 @@ class PollVotingController < ApplicationController
   def process_multiple_vote  
     @poll = Poll.find(params[:poll])
     answer_ids = params[:answer_ids]
-    
+   
+    n_guid = SecureRandom.uuid
+    comment = create_comment(params[:comment])
+
     answer_ids.each do |answer_id|
       answer = Answer.new(params[:answer])
+      answer.guid = n_guid
       answer.answer_possibility_id = AnswerPossibility.find(answer_id).id
       answer.value =AnswerPossibility.find(answer_id).value
       answer.os = RUBY_PLATFORM;
       answer.browser = request.env['HTTP_USER_AGENT'];
       answer.ip = request.env['REMOTE_ADDR'];
       answer.poll_id = @poll.id
+      answer.comment_id = comment.id
       answer.save      
     end
 
@@ -46,7 +51,11 @@ class PollVotingController < ApplicationController
   end
 
   def process_single_vote
+
+    comment = create_comment(params[:comment])
+
     answer = Answer.new(params[:answer])
+    answer.guid = SecureRandom.uuid
     @poll = Poll.find(params[:poll])
     answer_possibility = AnswerPossibility.find(params[:"radio-choice"])
     answer.answer_possibility_id = answer_possibility.id
@@ -55,6 +64,7 @@ class PollVotingController < ApplicationController
     answer.browser = request.env['HTTP_USER_AGENT'];
     answer.ip = request.env['REMOTE_ADDR'];
     answer.poll_id = @poll.id
+    answer.comment_id = comment.id
     session[@poll.id] = 1    
 
     respond_to do |format|
@@ -83,6 +93,13 @@ class PollVotingController < ApplicationController
     end
     
 
+  end
+
+  def create_comment(input_text)
+    c = Comment.new
+    c.text= input_text
+    c.save
+    return c
   end
   
 end

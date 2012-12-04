@@ -1,16 +1,15 @@
 %h1= @poll.title 
 %h2= @poll.question
 
-- if !(@poll.exp_date >= Date.today and @poll.start_date >= Date.today)
-	%h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
+- if @poll.exp_date >= Date.today and @poll.start_date <= Date.today
+  %img{ src: @chart_url } 
+  %img{ src: @bar_url } 
+
+  %table
+    - @poll.answer_possibilities.each do |answer_possibility|
+      %tr
+        %td= answer_possibility.value 
+        %td= answer_possibility.answers.count 
 
 - else 
-	%img{ src: @chart_url } 
-	%img{ src: @bar_url } 
-
-	%table
-		- @poll.answer_possibilities.each do |answer_possibility|
-			%tr
-				%td= answer_possibility.value 
-				%td= answer_possibility.answers.count 
-
+  %h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
