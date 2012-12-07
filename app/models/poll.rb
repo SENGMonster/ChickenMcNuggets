@@ -5,6 +5,7 @@ class Poll < ActiveRecord::Base
   belongs_to :category
   belongs_to :creator
   has_many :answers
+  has_many :comments
   
   accepts_nested_attributes_for :answer_possibilities, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 end

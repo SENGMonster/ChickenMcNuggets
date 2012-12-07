@@ -1,5 +1,7 @@
 class PollsController < ApplicationController
 	before_filter :authenticate_creator!
+	require 'gchart'
+
 	def index
 		@polls = Poll.where(creator_id: current_creator.id)
 	end
@@ -70,6 +72,22 @@ class PollsController < ApplicationController
       format.html { redirect_to polls_path }
       format.json { head :no_content }
     end
+  end
+
+  def show
+    ##https://github.com/mattetti/googlecharts
+    @poll=Poll.find(params[:id])
+    @comments = 
+    data=[]
+    labels=[]
+    @poll.answer_possibilities.each do |p|
+      data << p.answers.count
+      labels << p.value + " (" + p.answers.count.to_s + ")"
+    end
+    on_class = "Gchart"
+    @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '400x200',:data => data, :labels => labels )
+    #@chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )
+    #@bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
   end
 
 

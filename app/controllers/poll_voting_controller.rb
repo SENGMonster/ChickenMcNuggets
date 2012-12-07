@@ -30,7 +30,10 @@ class PollVotingController < ApplicationController
     answer_ids = params[:answer_ids]
    
     n_guid = SecureRandom.uuid
-    comment = create_comment(params[:comment])
+    comment = Comment.new
+    comment.text = params[:comment]
+    comment.poll_id = @poll.id
+    comment.save
 
     answer_ids.each do |answer_id|
       answer = Answer.new(params[:answer])
@@ -51,8 +54,12 @@ class PollVotingController < ApplicationController
   end
 
   def process_single_vote
+    @poll = Poll.find(params[:poll])
 
-    comment = create_comment(params[:comment])
+    comment = Comment.new
+    comment.text = params[:comment]
+    comment.poll_id = @poll.id
+    comment.save
 
     answer = Answer.new(params[:answer])
     answer.guid = SecureRandom.uuid

@@ -1,0 +1,32 @@
+%h1= @poll.title 
+%h2= @poll.question
+
+- if @poll.exp_date >= Date.today and @poll.start_date <= Date.today
+  %img{ src: @chart_url } 
+  %img{ src: @bar_url } 
+
+- else 
+  %h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
+
+%h2= "Kommentare"
+%table
+  - @poll.comments.each do |comment|
+
+    %tr.box
+      %td= "Hat abgestimmt am #{comment.created_at.strftime("%d %b. %Y %H:%M")}"
+    %tr
+      %td= "Antworten:"
+      - count = 1
+      -comment.answers.each do |answer|
+        %td= answer.value
+        / - if count == comment.answers.length
+        /   %tr
+        /     %td= "Browser:"
+        /     %td= answer.browser
+        /   %tr
+        /     %td= "Betriebssystem:"
+        /     %td= answer.os
+        / - count = count + 1
+    %tr
+      %td= "Kommentar:"
+      %td= comment.text

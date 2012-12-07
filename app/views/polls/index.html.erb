@@ -21,6 +21,7 @@
     <td><%= poll_creation.exp_date %></td>
     <td><%= poll_creation.chart_type %></td>
     <td><%= link_to "Anzeigen", :controller => "polls", :action => "show", :id => poll_creation.id %> </td>
+    <td><%= link_to "Mobile Ansicht", :controller => "poll_voting", :action => "show", :id => poll_creation.id %> </td>
     <td><%= link_to 'Löschen', poll_creation, confirm: "Sicher?", method: :delete %> </td>
     <td><%= link_to "Editieren", edit_poll_path(poll_creation )%> </td>
   </tr>
