@@ -11,6 +11,8 @@ $gray: #d7d6d5
 body
   background: url(image_path('subtle_stripes.png'))
   font-family: arial, helvetica, sans-serif
+  font-size: 12pt
+  color: $dark
 
 input
   border: none
@@ -25,6 +27,29 @@ input[type="submit"]
   color: white
   padding: 5px
 
+h1,h2,h3,h4
+  font-weight: bold
+  margin: 10px 0px
+
+h1
+  font-size: 19pt
+  color: $blue
+
+h2
+  font-size: 17pt
+  color: $blue
+
+h3
+  font-size: 15pt
+
+h4
+  font-size: 13pt
+
+a
+  color: $dark
+
+  &:visited
+    color: $dark
 
 // STUB 
 #wrapper
@@ -53,6 +78,15 @@ input[type="submit"]
     color: $blue
     text-decoration: none
 
+#content
+  background:  url(image_path('white.png'))
+  padding: 10px
+  padding-bottom: 30px
+
+
+
+/* USE FUL */
+
 .box 
   border-top: 1px solid black
 
@@ -61,7 +95,20 @@ input[type="submit"]
   padding: 20px
 
 
-#content
-  background:  url(image_path('white.png'))
-  padding: 10px
-  padding-bottom: 30px
+.formtastic
+  li
+    
+  label
+    display: block
+    float: left
+    width: 200px
+  input
+    display: block
+    float: left
+    width: 400px
+  select
+    display: block
+    float: left
+
+  select,input,option
+    background: $gray

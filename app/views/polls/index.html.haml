@@ -1,15 +1,15 @@
-%h1="Umfragen"
+%h1.title_left="Umfragen"
+.new_poll
+  %a.icon_button{href: new_poll_path}
+    = image_tag('star.png')
+    Neue Umfrage 
 
+.clear
 
+- @polls.each do |poll_creation| 
+  .poll_preview
+    %h4= poll_creation.title   
 
-= @polls.each do |poll_creation| 
-  .poll_preview.grayBox
-    %h4= poll_creation.title 
-    %ul.poll_index_actions
-      %li= link_to image_tag('pie_chart.png'), :controller => "polls", :action => "show", :id => poll_creation.id 
-      %li= link_to image_tag('chart.png'), :controller => "poll_voting", :action => "show", :id => poll_creation.id
-      %li= link_to image_tag('bin.png'), poll_creation, confirm: "Sicher?", method: :delete 
-      %li= link_to image_tag('edit.png'), edit_poll_path(poll_creation)
     .clear
     
     .poll_preview_question
@@ -19,7 +19,25 @@
     .poll_preview_chart_type
       = poll_creation.chart_type
 
+    %ul.poll_index_actions
+      %li
+        %a.icon_button{href: "/polls/show?id=#{poll_creation.id}"}
+          =image_tag('pie_chart.png')
+          anzeigen
+      %li
+        %a.icon_button{href: "/poll_voting/show?id=#{poll_creation.id}"}
+          =image_tag('pie_chart.png')
+          mobile Sicht
+      %li
+        %a.icon_button{href: edit_poll_path(poll_creation)}
+          =image_tag('edit.png')
+          bearbeiten
+      %li
+        %a.icon_button{href: "/polls/#{poll_creation.id}", confirm: "Sicher?", method: :delete}
+          =image_tag('bin.png')
+          löschen 
+
     .clear
 
 
-= link_to 'New Poll creation', new_poll_path
+

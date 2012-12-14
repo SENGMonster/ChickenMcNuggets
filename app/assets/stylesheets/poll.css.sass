@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.title_left 
+  float: left
+
+
+.icon_button
+  float: left
+  background: $gray
+  padding: 7px
+  display: block
+  text-decoration: none
+  color: white
+
+  img
+    height: 15px
+
+
 .table_cell
   float: left
   margin-right: 30px
@@ -10,13 +27,15 @@
   margin-right: 0px
 
 
+.new_poll
+  float: left
+  margin-left: 30px
+
 .poll_preview
-  h4
-    float: left
 
 .poll_preview_question
   @extend .table_cell
-  width: 500px
+  width: 250px
 
 .poll_preview_exp_date
   @extend .table_cell
@@ -25,11 +44,11 @@
 
 .poll_preview_chart_type
   @extend .table_cell
-  width: 100px
+  width: 70px
 
 .poll_index_actions
   list-style: none
-  float: left
+  float: right
 
   li
     float: left
@@ -38,6 +57,5 @@
     margin-right: 20px
     &:last-child
       margin-right: 0px
-  img
-    height: 15px
+
 
