@@ -2,19 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $blue: #00397c
-$dark: #252326
+$dark: #1c1c1c
+$gray: #d7d6d5
 
 .clear
   clear: both
 
 body
   background: url(image_path('subtle_stripes.png'))
+  font-family: arial, helvetica, sans-serif
 
 input
   border: none
   padding: 3px
-  
+  height: 23px
 
+label
+  margin: 5px 0px
+
+input[type="submit"]
+  background: $blue
+  color: white
+  padding: 5px
 
 
 // STUB 
@@ -38,12 +47,18 @@ input
     padding: 10px
     margin-right: 30px
     background: url(image_path('white.png'))
+  li:last-child
+    margin-right: 0px
   a 
     color: $blue
     text-decoration: none
 
 .box 
   border-top: 1px solid black
+
+.grayBox
+  background: $gray
+  padding: 20px
 
 
 #content

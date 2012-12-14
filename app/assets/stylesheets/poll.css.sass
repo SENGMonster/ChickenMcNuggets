@@ -1,0 +1,43 @@
+// Place all the styles related to the poll controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table_cell
+  float: left
+  margin-right: 30px
+
+.table_cell:last-child
+  margin-right: 0px
+
+
+.poll_preview
+  h4
+    float: left
+
+.poll_preview_question
+  @extend .table_cell
+  width: 500px
+
+.poll_preview_exp_date
+  @extend .table_cell
+  width: 100px
+
+
+.poll_preview_chart_type
+  @extend .table_cell
+  width: 100px
+
+.poll_index_actions
+  list-style: none
+  float: left
+
+  li
+    float: left
+    padding: 0
+    margin: 0
+    margin-right: 20px
+    &:last-child
+      margin-right: 0px
+  img
+    height: 15px
+

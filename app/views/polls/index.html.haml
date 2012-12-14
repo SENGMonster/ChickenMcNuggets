@@ -1,0 +1,25 @@
+%h1="Umfragen"
+
+
+
+= @polls.each do |poll_creation| 
+  .poll_preview.grayBox
+    %h4= poll_creation.title 
+    %ul.poll_index_actions
+      %li= link_to image_tag('pie_chart.png'), :controller => "polls", :action => "show", :id => poll_creation.id 
+      %li= link_to image_tag('chart.png'), :controller => "poll_voting", :action => "show", :id => poll_creation.id
+      %li= link_to image_tag('bin.png'), poll_creation, confirm: "Sicher?", method: :delete 
+      %li= link_to image_tag('edit.png'), edit_poll_path(poll_creation)
+    .clear
+    
+    .poll_preview_question
+      = poll_creation.question
+    .poll_preview_exp_date
+      = poll_creation.exp_date
+    .poll_preview_chart_type
+      = poll_creation.chart_type
+
+    .clear
+
+
+= link_to 'New Poll creation', new_poll_path

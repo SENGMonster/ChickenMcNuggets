@@ -3,7 +3,8 @@ class PollsController < ApplicationController
 	require 'gchart'
 
 	def index
-		@polls = Poll.where(creator_id: current_creator.id)
+		@polls = Poll.where(creator_id: current_creator.id).group("category_id")
+    
 	end
 
 	def edit
