@@ -21,7 +21,9 @@
 
     %ul.poll_index_actions
       %li
-        %a.icon_button{href: "/polls/show?id=#{poll_creation.id}"}
+        =tinyfy("http://0.0.0.0:3000/polls/#{poll_creation.id}")
+      %li
+        %a.icon_button{href: "/polls/#{poll_creation.id}"}
           =image_tag('pie_chart.png')
           anzeigen
       %li

@@ -1,4 +1,7 @@
 module ApplicationHelper
+  require 'net/http'
+  require 'uri'
+
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
@@ -9,5 +12,18 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+  end
+
+  def tinyfy(newurl)
+   url = URI.parse('http://tinyurl.com/')
+   res = Net::HTTP.start(url.host, url.port) {|http|
+   http.get('/api-create.php?url=' + newurl)
+   }
+   if res.body.empty?
+      #tinyurl is not responding properly… Return the original url
+      return newurl
+   else
+      return res.body
+   end
   end
 end

@@ -1,0 +1,33 @@
+<h1>Listing poll_creations</h1>
+<table>
+  <tr>
+    <th>Poll type</th>
+    <th>Category</th> 
+    <th>Title</th>
+    <th>Question</th>
+    <th>Exp date</th>
+    <th>Chart type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @polls.each do |poll_creation| %>
+  <tr>
+    <td><%= poll_creation.poll_type_id %></td>
+    <td><%= poll_creation.category_id %></td>
+    <td><%= poll_creation.title %></td>
+    <td><%= poll_creation.question %></td>
+    <td><%= poll_creation.exp_date %></td>
+    <td><%= poll_creation.chart_type %></td>
+    <td><%= link_to "Anzeigeen", :controller => "polls", :action => "show", :id => poll_creation.id %> </td>
+    <td><%= link_to "Mobile Ansicht", :controller => "poll_voting", :action => "show", :id => poll_creation.id %> </td>
+    <td><%= link_to 'Löschen', poll_creation, confirm: "Sicher?", method: :delete %> </td>
+    <td><%= link_to "Editieren", edit_poll_path(poll_creation )%> </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Poll creation', new_poll_path %>

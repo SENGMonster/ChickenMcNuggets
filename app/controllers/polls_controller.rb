@@ -2,9 +2,14 @@ class PollsController < ApplicationController
 	before_filter :authenticate_creator!
 	require 'gchart'
 
-	def index
-		@polls = Poll.where(creator_id: current_creator.id).group("category_id")
-    
+	def index		
+		#@polls = Poll.where(creator_id: current_creator.id).group("category_id")
+		@polls = Array.new
+		Poll.all.each do |poll|
+			if poll.creator_id == current_creator.id
+				@polls << poll
+			end
+		end  
 	end
 
 	def edit
@@ -40,6 +45,8 @@ class PollsController < ApplicationController
 	def create
 	  @poll = Poll.new(params[:poll])
 	  @poll.creator_id = current_creator.id
+
+	  #@poll.short_url = tinyfy("http://0.0.0.0:3000/polls/#{@poll.id}")
 	
 
 	  respond_to do |format|
