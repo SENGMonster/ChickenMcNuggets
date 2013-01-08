@@ -2,6 +2,7 @@ class PollsController < ApplicationController
 	before_filter :authenticate_creator!
 	require 'gchart'
 
+
 	def index		
 		#@polls = Poll.where(creator_id: current_creator.id).group("category_id")
 		@polls = Array.new
@@ -45,8 +46,7 @@ class PollsController < ApplicationController
 	def create
 	  @poll = Poll.new(params[:poll])
 	  @poll.creator_id = current_creator.id
-
-	  #@poll.short_url = tinyfy("http://0.0.0.0:3000/polls/#{@poll.id}")
+	  @poll.shorturl = tinyfy("http://0.0.0.0:3000/polls/#{@poll.id}")
 	
 
 	  respond_to do |format|
@@ -98,5 +98,17 @@ class PollsController < ApplicationController
     #@bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
   end
 
+  def tinyfy(newurl)
+   url = URI.parse('http://tinyurl.com/')
+   res = Net::HTTP.start(url.host, url.port) {|http|
+   http.get('/api-create.php?url=' + newurl)
+   }
+   if res.body.empty?
+      #tinyurl is not responding properly… Return the original url
+      return newurl
+   else
+      return res.body
+   end
+  end
 
 end

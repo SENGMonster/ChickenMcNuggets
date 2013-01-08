@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 2012271084411122) do
     t.integer  "category_id"
     t.string   "chart_type"
     t.date     "start_date"
+    t.string   "shorturl"
   end
 
 end
