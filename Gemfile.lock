@@ -213,7 +213,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activeadmin (= 0.5.0)
+  activeadmin (~> 0.5.0)
   cancan
   capistrano
   coffee-rails (~> 3.2.1)
