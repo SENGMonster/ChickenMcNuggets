@@ -13,6 +13,7 @@ gem 'cancan'
 gem 'activeadmin'
 gem 'paperclip'
 gem 'multi_json'
+gem 'capistrano'
 
 group :test do
   gem 'rspec'
