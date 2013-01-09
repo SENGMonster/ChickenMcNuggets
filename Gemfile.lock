@@ -218,7 +218,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber
   devise
-  formtastic
   googlecharts
   haml
   hpricot
