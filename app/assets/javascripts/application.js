@@ -13,4 +13,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require application.js
+//= require desktop/application.js

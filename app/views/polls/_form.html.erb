@@ -1,4 +1,4 @@
- <%= semantic_form_for [:admin, @poll], :builder => ActiveAdmin::FormBuilder do |f|
+ <%= semantic_form_for [@poll], :url => url_for(:controller => 'polls', :action => 'create'), :builder => ActiveAdmin::FormBuilder do |f|
 
     puts f.object.errors.inspect
         #puts f.object.errors.inspect
@@ -9,20 +9,21 @@
         f.input :poll_type
         f.input :title
         f.input :question
+        f.input :start_date
         f.input :exp_date
         f.input :category
         
         #f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
         # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
-    
+      end
+
+      f.inputs do
         f.input :chart_type,  :as => :select,      :collection => ["line", "line_xy", "sparkline", "scatter", "bar", "venn", "pie",  "pie_3d", "google meter"]
       end
 
       f.has_many :answer_possibilities do |answers|
         answers.input :value
-      end
-   
-
+      end   
       
       f.buttons
     end 

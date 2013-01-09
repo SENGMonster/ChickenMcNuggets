@@ -14,7 +14,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
-    activeadmin (0.5.1)
+    activeadmin (0.5.0)
       arbre (>= 1.0.1)
       bourbon (>= 1.0.0)
       devise (>= 1.1.2)
@@ -198,11 +198,12 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (= 0.5.0)
   cancan
   coffee-rails (~> 3.2.1)
   cucumber
   devise
+  formtastic
   googlecharts
   haml
   hpricot
