@@ -14,7 +14,7 @@ gem 'activeadmin', '0.5.0'
 gem 'paperclip'
 gem 'multi_json'
 gem 'capistrano'
-
+gem 'mysql2'
 
 group :test do
   gem 'rspec'

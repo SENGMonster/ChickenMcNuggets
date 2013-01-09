@@ -5,7 +5,7 @@
 # be sure to change these
 set :user, 'raje'
 set :domain, '194.94.7.165'
-set :application, 'ChickenMcNuggets'
+set :application, 'votingsystem'
 
 # adjust if you are using RVM, remove if you are not
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
