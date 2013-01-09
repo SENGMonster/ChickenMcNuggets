@@ -4,13 +4,7 @@ class PollsController < ApplicationController
 
 
 	def index		
-		#@polls = Poll.where(creator_id: current_creator.id).group("category_id")
-		@polls = Array.new
-		Poll.all.each do |poll|
-			if poll.creator_id == current_creator.id
-				@polls << poll
-			end
-		end  
+	 @polls = Poll.where(creator_id: current_creator.id).group("category_id")
 	end
 
 	def edit
