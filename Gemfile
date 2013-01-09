@@ -10,7 +10,7 @@ gem 'googlecharts'
 
 gem 'devise'
 gem 'cancan'
-gem 'activeadmin'
+gem 'activeadmin', '0.5.0'
 gem 'paperclip'
 gem 'multi_json'
 gem 'capistrano'
