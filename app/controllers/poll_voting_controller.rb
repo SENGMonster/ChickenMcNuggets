@@ -7,7 +7,6 @@ class PollVotingController < ApplicationController
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
-
     data=[]
     labels=[]
     @poll.answer_possibilities.each do |p|
@@ -30,10 +29,7 @@ class PollVotingController < ApplicationController
     answer_ids = params[:answer_ids]
    
     n_guid = SecureRandom.uuid
-    comment = Comment.new
-    comment.text = params[:comment]
-    comment.poll_id = @poll.id
-    comment.save
+    commentid = create_comment(params[:comment],@poll.id)
 
     answer_ids.each do |answer_id|
       answer = Answer.new(params[:answer])
@@ -44,7 +40,7 @@ class PollVotingController < ApplicationController
       answer.browser = request.env['HTTP_USER_AGENT'];
       answer.ip = request.env['REMOTE_ADDR'];
       answer.poll_id = @poll.id
-      answer.comment_id = comment.id
+      answer.comment_id = commentid
       answer.save      
     end
 
@@ -56,10 +52,7 @@ class PollVotingController < ApplicationController
   def process_single_vote
     @poll = Poll.find(params[:poll])
 
-    comment = Comment.new
-    comment.text = params[:comment]
-    comment.poll_id = @poll.id
-    comment.save
+    commentid = create_comment(params[:comment],@poll.id)
 
     answer = Answer.new(params[:answer])
     answer.guid = SecureRandom.uuid
@@ -71,7 +64,7 @@ class PollVotingController < ApplicationController
     answer.browser = request.env['HTTP_USER_AGENT'];
     answer.ip = request.env['REMOTE_ADDR'];
     answer.poll_id = @poll.id
-    answer.comment_id = comment.id
+    answer.comment_id = commentid
     session[@poll.id] = 1    
 
     respond_to do |format|
@@ -102,11 +95,16 @@ class PollVotingController < ApplicationController
 
   end
 
-  def create_comment(input_text)
-    c = Comment.new
-    c.text= input_text
-    c.save
-    return c
+  def create_comment(input_text, pid)
+    unless input_text.empty?
+      c = Comment.new
+      c.poll_id=pid
+      c.text= input_text
+      c.save
+      return c.id
+    else
+      return nil
+    end
   end
   
 end

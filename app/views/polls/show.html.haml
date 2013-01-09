@@ -1,32 +1,60 @@
-%h1= @poll.title 
-%h2= @poll.question
+.result_headings
+  %h1
+    = @poll.title
+   
+  %p.question="\"#{@poll.question}\""
+.poll_menu
+  %ul
+    %li
+      %a.icon_button{href: "/poll_voting/show?id=#{@poll.id}"}
+        =image_tag('pie_chart.png')
+        %span="mobile Ansicht"
+    %li
+      %a.icon_button{href: edit_poll_path(@poll)}
+        =image_tag('edit.png')
+        %span="bearbeiten"
+    %li
+      %a.icon_button{href: "/polls/#{@poll.id}", confirm: "Sicher?", method: :delete}
+        =image_tag('bin.png')
+        %span="löschen"
+    .clear
 
-- if @poll.exp_date >= Date.today and @poll.start_date <= Date.today
-  %img{ src: @chart_url } 
-  %img{ src: @bar_url } 
+.clear
+
+- if @poll.start_date >= Date.today
+  %h3="Noch keine Daten vorhanden" 
+  %p="Der Zeitraum zum Abstimmen für diese Umfrage hat noch nicht begonnen (Start: #{@poll.start_date})"
 
 - else 
-  %h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"
+  .graphic_result
+    %img{ src: @chart_url } 
+    /%img{ src: @bar_url } 
+  .table_result
+    %p
+      Link zur Umfrage:
+      =link_to @poll.shorturl, @poll.shorturl
+    
+    %p.bold
+      ="#{@unique_answers} Antworten mit #{@poll.answers.count} Angaben"
+    %table
+      - @resultdata.each do |nr,a|
+        %tr
+          %td.answer_label= a
+          %td.answer_count= nr
+  .clear
 
-%h2= "Kommentare"
-%table
-  - @poll.comments.each do |comment|
-
-    %tr.box
-      %td= "Hat abgestimmt am #{comment.created_at.strftime("%d %b. %Y %H:%M")}"
+.comments
+  %h4= "Kommentare"
+  %table
     %tr
-      %td= "Antworten:"
-      - count = 1
-      -comment.answers.each do |answer|
-        %td= answer.value
-        / - if count == comment.answers.length
-        /   %tr
-        /     %td= "Browser:"
-        /     %td= answer.browser
-        /   %tr
-        /     %td= "Betriebssystem:"
-        /     %td= answer.os
-        / - count = count + 1
-    %tr
-      %td= "Kommentar:"
-      %td= comment.text
+      %th="Datum"
+      %th="Angaben"
+      %th="Kommentar"
+    - @poll.comments.each do |comment|
+      %tr
+        %td= comment.created_at.strftime("%d %b. %Y %H:%M")
+        -antwort=""
+        -comment.answers.each do |answer|
+          - antwort += "#{answer.value} "
+        %td= antwort    
+        %td= comment.text

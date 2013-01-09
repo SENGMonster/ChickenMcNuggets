@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+/* INDEX */
 .title_left 
   float: left
 
@@ -10,13 +11,18 @@
 .icon_button
   float: left
   background: $gray
-  padding: 7px
+  padding: 5px
   display: block
   text-decoration: none
-  color: white
+  font-size: 9pt
 
   img
     height: 15px
+    float: left
+  span
+    float: left
+    margin-top: 3px
+    margin-left: 3px
 
 
 .table_cell
@@ -30,17 +36,21 @@
 .new_poll
   float: left
   margin-left: 30px
+  margin-top: 10px
 
 .poll_preview
 
-.poll_preview_question
-  @extend .table_cell
-  width: 250px
-
-.poll_preview_exp_date
+.poll_preview_numbers
   @extend .table_cell
   width: 100px
 
+.poll_preview_expdate
+  @extend .table_cell
+  width: 100px
+
+.poll_preview_tinyurl
+  @extend .table_cell
+  width: 100px
 
 .poll_preview_chart_type
   @extend .table_cell
@@ -49,13 +59,72 @@
 .poll_index_actions
   list-style: none
   float: right
+  margin-top: -5px
 
   li
     float: left
     padding: 0
     margin: 0
-    margin-right: 20px
+    margin-right: 10px
     &:last-child
       margin-right: 0px
 
 
+/*SHOW*/
+
+.graphic_result
+  width: 400px
+  float: left
+  margin-left: 50px
+
+.table_result
+  width: 350px
+  float: left
+  padding: 20px 0px
+  margin-left: 75px
+
+  p    
+    margin-bottom: 20px
+
+  td
+    height: 30px
+  .answer_label
+    width: 250px
+  .answer_count
+    text-align: right
+    padding-right: 30px
+
+
+.result_headings
+  width: 500px
+  float: left
+
+.question
+  font-size: 13pt
+  margin-top: 20px
+  margin-bottom: 30px
+  font-style: italic
+
+.poll_menu
+  width: 300px
+  float: right
+  padding: 20px 0px
+  
+
+  p
+    text-align: right
+  li
+    float: left
+    margin-left: 10px
+
+.comments
+  margin-top: 30px
+
+  h4
+    margin-bottom: 15px
+
+  th
+    font-weight: bold
+    text-align: left
+  td
+    padding: 8px 15px

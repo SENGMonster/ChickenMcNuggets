@@ -17,20 +17,20 @@
       .menu
         %ul
           %li
+            = link_to "Umfragen", polls_path 
+          %li
             - if creator_signed_in?
               = link_to "Logout", destroy_creator_session_path, :method => :delete 
             - else 
               = link_to "Login", new_creator_session_path 
-          %li
-            = link_to "PollCreation", polls_path 
-          %li
-            = link_to "Admin", "/admin" 
-          %li
-            = link_to 'Show' , poll_voting_show_path 
-          %li
-            = link_to 'Vote' , poll_voting_vote_path 
+        
+     
       .clear
 
     #content
       = yield 
   
+    #footer
+      %ul
+        %li
+          = link_to "Admin", "/admin" 

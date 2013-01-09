@@ -79,10 +79,14 @@ class PollsController < ApplicationController
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
-    @comments = 
+    @resultdata={}
+    uanswers=@poll.answers.group(:guid).count
+    @unique_answers=uanswers.count    
+
     data=[]
     labels=[]
     @poll.answer_possibilities.each do |p|
+      @resultdata[p.answers.count] = p.value
       data << p.answers.count
       labels << p.value + " (" + p.answers.count.to_s + ")"
     end

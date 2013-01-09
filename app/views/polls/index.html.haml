@@ -2,42 +2,40 @@
 .new_poll
   %a.icon_button{href: new_poll_path}
     = image_tag('star.png')
-    Neue Umfrage 
+    %span="Neue Umfrage"
 
 .clear
 
 - @polls.each do |poll_creation| 
   .poll_preview
-    %h4= poll_creation.title   
+    %h4=poll_creation.title
 
-    .clear
-    
-    .poll_preview_question
-      = poll_creation.question
-    .poll_preview_exp_date
+    .poll_preview_expdate
       = poll_creation.exp_date
+    .poll_preview_numbers
+      = "#{poll_creation.answers.count} Stimmen"
     .poll_preview_chart_type
       = poll_creation.chart_type
+    .poll_preview_tinyurl
+      =  link_to poll_creation.shorturl, "/poll_voting/vote?id=#{poll_creation.id}"
 
     %ul.poll_index_actions
       %li
-        = poll_creation.shorturl
-      %li
         %a.icon_button{href: "/polls/#{poll_creation.id}"}
           =image_tag('pie_chart.png')
-          anzeigen
+          %span="ansehen"
       %li
         %a.icon_button{href: "/poll_voting/show?id=#{poll_creation.id}"}
           =image_tag('pie_chart.png')
-          mobile Sicht
+          %span="mobile Ansicht"
       %li
         %a.icon_button{href: edit_poll_path(poll_creation)}
           =image_tag('edit.png')
-          bearbeiten
+          %span="bearbeiten"
       %li
         %a.icon_button{href: "/polls/#{poll_creation.id}", confirm: "Sicher?", method: :delete}
           =image_tag('bin.png')
-          löschen 
+          %span="löschen"
 
     .clear
 

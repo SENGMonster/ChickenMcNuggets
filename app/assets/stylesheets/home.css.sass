@@ -8,10 +8,14 @@ $gray: #d7d6d5
 .clear
   clear: both
 
+.space
+  clear: both
+  height: 30px
+
 body
   background: url(image_path('subtle_stripes.png'))
   font-family: arial, helvetica, sans-serif
-  font-size: 12pt
+  font-size: 11pt
   color: $dark
 
 input
@@ -33,7 +37,7 @@ h1,h2,h3,h4
 
 h1
   font-size: 19pt
-  color: $blue
+  color: $dark
 
 h2
   font-size: 17pt
@@ -61,17 +65,20 @@ a
 
 .logo
   float: left
+  margin-top: 10px
 
 
 .menu
+  background:  url(image_path('white.png'))
   float: right
+  margin-top: 20px
   ul
     list-style: none
   li
     float: left
     padding: 10px
     margin-right: 30px
-    background: url(image_path('white.png'))
+   
   li:last-child
     margin-right: 0px
   a 
@@ -80,9 +87,12 @@ a
 
 #content
   background:  url(image_path('white.png'))
-  padding: 10px
+  padding: 20px
   padding-bottom: 30px
 
+
+#footer
+  margin-top: 30px
 
 
 /* USE FUL */
@@ -94,6 +104,8 @@ a
   background: $gray
   padding: 20px
 
+.bold
+  font-weight: bold
 
 // .formtastic
 //   li
