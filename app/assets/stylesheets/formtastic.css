@@ -1,3 +1,4 @@
 /*
-*= require formtastic
-*/
+ *= require bootstrap-without-forms
+ *= require formtastic-plus-bootstrap
+ */

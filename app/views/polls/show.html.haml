@@ -9,6 +9,7 @@
       %a.icon_button{href: "/poll_voting/show?id=#{@poll.id}"}
         =image_tag('pie_chart.png')
         %span="mobile Ansicht"
+        .clear
     %li
       %a.icon_button{href: edit_poll_path(@poll)}
         =image_tag('edit.png')
@@ -45,7 +46,7 @@
 
 .comments
   %h4= "Kommentare"
-  %table
+  %table.table
     %tr
       %th="Datum"
       %th="Angaben"
