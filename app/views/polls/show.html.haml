@@ -29,7 +29,7 @@
 - else 
   .graphic_result
     %img{ src: @chart_url } 
-    /%img{ src: @bar_url } 
+  
   .table_result
     %p
       Link zur Umfrage:
@@ -38,7 +38,7 @@
     %p.bold
       ="#{@unique_answers} Antworten mit #{@poll.answers.count} Angaben"
     %table
-      - @resultdata.each do |nr,a|
+      - @resultdata.each do |a,nr|
         %tr
           %td.answer_label= a
           %td.answer_count= nr

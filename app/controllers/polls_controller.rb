@@ -17,6 +17,8 @@ class PollsController < ApplicationController
 	  respond_to do |format|
 	    if @poll.update_attributes(params[:poll])
 
+       unless params[:poll][:answer_possibilities_attributes].nil?
+
         answer_possibilities = params[:poll][:answer_possibilities_attributes]
         answer_possibilities.each do |k,v|
           unless v.fetch("_destroy").eql?("1")
@@ -31,7 +33,8 @@ class PollsController < ApplicationController
             answerPossibility.save
           end
         end
- 
+
+      end
 
 
 	      format.html { redirect_to polls_path, notice: 'Poll was successfully updated.' }
@@ -104,14 +107,13 @@ class PollsController < ApplicationController
     data=[]
     labels=[]
     @poll.answer_possibilities.each do |p|
-      @resultdata[p.answers.count] = p.value
+      @resultdata[p.value] = p.answers.count
       data << p.answers.count
       labels << p.value + " (" + p.answers.count.to_s + ")"
     end
     on_class = "Gchart"
-    @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '400x200',:data => data, :labels => labels )
-    #@chart_url=Gchart.pie_3d(:title => @poll.title, :size => '400x200',:data => data, :labels => labels )
-    #@bar_url=Gchart.bar(:data => data, :bar_width_and_spacing => '25,50', :labels => labels)        
+    @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '500x300',:data => data, :labels => labels )
+      
   end
 
   def tinyfy(newurl)
