@@ -1,30 +1,41 @@
- <%= semantic_form_for [@poll], :url => url_for(:controller => 'polls', :action => 'create'), :builder => ActiveAdmin::FormBuilder do |f|
+ <% power=true if @poll.start_date > Date.today %>
+ <%= semantic_form_for [@poll], :url => url_for(:controller => 'polls', :action => "#{action_path}"), :builder => ActiveAdmin::FormBuilder do |f| 
+    
+      puts f.object.errors.inspect
 
-    puts f.object.errors.inspect
-        #puts f.object.errors.inspect
-
-
+    if power
       f.inputs do
       #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
-        f.input :poll_type
-        f.input :title
-        f.input :question
-        f.input :start_date
-        f.input :exp_date
-        f.input :category
+          f.input :poll_type
+          f.input :category
+          f.input :title
+          f.input :question
+          f.input :start_date
         
         #f.input :description, :input_html => { :class => 'mceEditor', :size => "80x30"}
         # f.input :crleated_at, :label => "Cr-eate User At", :as => :datepicker,:input_html => { :style  => "width:100px;"}
       end
+    end
 
       f.inputs do
+        f.input :exp_date
         f.input :chart_type,  :as => :select,      :collection => ["line", "line_xy", "sparkline", "scatter", "bar", "venn", "pie",  "pie_3d", "google meter"]
       end
 
-      f.has_many :answer_possibilities do |answers|
-        answers.input :value
+    if power
+      f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
+        answers.inputs :answer_possibilities do
+         answers.input :value
+         answers.actions do
+            answers.input :"_destroy", :as => :boolean, :label=>"Löschen?"
+         end
+        end
       end   
-      
-      f.buttons
+    end
+        
+      f.actions do 
+        f.action :submit, :as => :button, :label => "Speichern"
+        f.action :cancel, :as => :link, :label => "Abbrechen"
+      end
     end 
       %>

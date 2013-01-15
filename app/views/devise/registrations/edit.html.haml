@@ -1,35 +1,36 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+%h2 Angaben ändern
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=>"form-horizontal" }) do |f|
   = devise_error_messages!
-  %div
-    = f.label :firstname
-    %br
-    = f.text_field :firstname
-  %div
-    = f.label :lastname
-    %br
-    = f.text_field :lastname
-  %div
-    = f.label :email
-    %br
-    = f.email_field :email
-  %div
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br
-    = f.password_field :password, :autocomplete => "off"
-  %div
-    = f.label :password_confirmation
-    %br
-    = f.password_field :password_confirmation
-  %div
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br
-    = f.password_field :current_password
-  %div= f.submit "Update"
-%h3 Cancel my account
+  .control-group
+    = f.label "Vorname", class: "control-label"
+    .controls
+      = f.text_field :firstname
+  .control-group
+    = f.label "Nachname", class: "control-label"
+    .controls
+      = f.text_field :lastname
+  .control-group
+    = f.label "Email", class: "control-label"
+    .controls
+      = f.email_field :email
+  .control-group
+    = f.label "Passwort", class: "control-label"    
+    .controls
+      = f.password_field :password, :autocomplete => "off"
+      %span.help-block
+        (frei lassen wenn das Passwort ungeändert bleiben soll)
+  .control-group
+    = f.label "Passwort wiederholen", class: "control-label"
+    .controls
+      = f.password_field :password_confirmation
+  .control-group
+    = f.label "aktuelles Passwort", class: "control-label"    
+    .controls
+      = f.password_field :current_password
+      %span.help-block
+        (um Änderungen zu speichern bitte aktuelles Passwort eingeben)
+  .form-actions
+    = f.submit "Aktualisieren", class: "btn-primary"
+%h3 Account löschen?
 %p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-= link_to "Back", :back
+  Unglücklich? #{link_to "Account löschen", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class=>"btn-danger"}.

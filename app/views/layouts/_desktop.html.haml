@@ -18,10 +18,13 @@
         %ul
           %li
             = link_to "Umfragen", polls_path 
-          %li
-            - if creator_signed_in?
+          - if creator_signed_in?
+            %li
+              = link_to "Mein Account", edit_creator_registration_path
+            %li
               = link_to "Logout", destroy_creator_session_path, :method => :delete 
-            - else 
+          - else
+            %li
               = link_to "Login", new_creator_session_path 
         
      
