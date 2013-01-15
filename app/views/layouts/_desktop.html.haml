@@ -16,6 +16,12 @@
         = image_tag("Logo.png")
       .menu
         %ul
+          - if creator_signed_in?
+            %li
+              =link_to "HowTo", home_faq_path
+          -else
+            %li
+              =link_to "Home", home_index_path
           %li
             = link_to "Umfragen", polls_path 
           - if creator_signed_in?
