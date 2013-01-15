@@ -14,7 +14,7 @@ $gray: #d7d6d5
 
 body
   background: url(image_path('subtle_stripes.png'))
-  font-family: arial, helvetica, sans-serif
+  font-family: "Helvetica Neue", arial, sans-serif
   font-size: 11pt
   color: $dark
 
@@ -59,6 +59,12 @@ a
   float: left
   margin-top: 10px
 
+  .survey
+    font-size: 30pt
+    color: #0060cc
+  .manager
+    font-size: 30pt
+
 
 .menu
   background:  url(image_path('white.png'))
@@ -102,3 +108,52 @@ a
 .bold
   font-weight: bold
 
+
+
+/* HOME */
+
+
+.item
+  background: #eeeeee
+  border: 1px #e3e3e3 solid
+  padding: 10px
+  
+  
+  img
+    width: 220px
+    margin: auto
+    float: left
+  a:visited
+    color: white
+  p.description
+    margin-top: 50px
+    width: 270px
+    font-style: italic
+    font-size: 9.5pt
+
+
+.index_headers
+  float: left
+  h3
+    margin-bottom: 10px
+
+.creators
+  float: left
+  width: 500px
+
+  a
+    @extend .btn
+    @extend .btn-primary
+  
+
+.admins
+  float: right
+  width: 390px
+  a
+    @extend .btn
+    @extend .btn-danger
+  p.description
+    width: 150px
+
+
+  

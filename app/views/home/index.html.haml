@@ -1,3 +1,29 @@
-%h1="Home"
+%h1="Der Umfrage Service der FH Münster"
+
+.users_welcome
+  .creators.item
+    =image_tag("man_grey.png")
+    .index_headers
+      %h3="Umfragenersteller"
+      %p
+        =link_to "Einloggen", new_creator_session_path
+        oder
+        =link_to "Registrieren", new_creator_registration_path
+      %p.description
+        Umfragen anlegen, ansehen & verwalten: verschiedenen Umfragetypen und vielen Diagrammtypen zur Auswertung.
+
+    .clear
 
 
+  .admins.item
+    =image_tag("man_black.png")
+    .index_headers
+      %h3="Administratoren"
+      %p
+        =link_to "Einloggen", "/admin"
+      %p.description
+        Verwalten von Benutzern, Umfragetypen und Kategorien
+
+    .clear
+
+.clear
