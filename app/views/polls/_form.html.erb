@@ -1,4 +1,5 @@
- <% power=true if @poll.start_date > Date.today %>
+ <% power=true if @poll.start_date > Date.today or @poll.answers.count <= 0 
+ binding.pry%>
  <%= semantic_form_for [@poll], :url => url_for(:controller => 'polls', :action => "#{action_path}"), :builder => ActiveAdmin::FormBuilder do |f| 
     
       puts f.object.errors.inspect
@@ -25,10 +26,8 @@
     if power
       f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
         answers.inputs :answer_possibilities do
-         answers.input :value
-         answers.actions do
-            answers.input :"_destroy", :as => :boolean, :label=>"Löschen?"
-         end
+         answers.input :value           
+         answers.input :"_destroy", :as => :boolean, :label=>"Löschen?" 
         end
       end   
     end

@@ -26,6 +26,8 @@
           - else
             %li
               = link_to "Login", new_creator_session_path 
+            %li
+              = link_to "Registrieren", new_registration_path(:creator)
         
      
       .clear
@@ -36,4 +38,6 @@
     #footer
       %ul
         %li
-          = link_to "Admin", "/admin" 
+          = link_to "Admin", "/admin"
+        %li
+          = link_to "Impressum", home_impressum_path

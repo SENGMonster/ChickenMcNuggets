@@ -1,11 +1,4 @@
 de:
-  helpers:
-    label:
-      creator:
-        remember_me: Anmeldeinformationen merken?
-        firstname: Vorname
-        lastname: Nachname
-        password: Passwort
   formtastic:
     titles:
       answer_possibilities: "Antwortmöglichkeit"
@@ -18,7 +11,7 @@ de:
         start_date: "Abstimmung möglich ab"
         category: "Kategorie"
         poll_type: "Antwortmöglichkeit"
-        chart_type: "Diagrammtyp"
+        chart_type: "Antworttyp"
       answer_possibility:
         value: "Name / Wert "
 
@@ -28,9 +21,9 @@ de:
         dummie: "Launch!"
   activerecord:
     models:
-      answerpossibility:
-        one: "Antwortmöglichkeit"
-        other: "Antwortmöglichkeiten"
+      answerpossibility: "Antwortmöglichkeit"
+      poll: "Umfrage"
+      category: "Kategorie"
     attributes:
       creator:
         email: Email
@@ -40,6 +33,9 @@ de:
         lastname: Nachname
       poll:
         title: "Der Titel"
+        question: "Fragestellung"
+        chart_type: "Diagrammtyp"
+        poll_type: "Antworttyp"
   date:
     abbr_day_names:
     - So

@@ -5,11 +5,16 @@
   %img{ src: @chart_url } 
   %img{ src: @bar_url } 
 
-  %table
-    - @poll.answer_possibilities.each do |answer_possibility|
+  %table{:"data-role" => "table", :id => "poll_result_table", :"data-mode"=>"reflow"}
+    %thead
       %tr
-        %td= answer_possibility.value 
-        %td= answer_possibility.answers.count 
+        %th="Antwort"
+        %th="Stimmen"
+    %tbody
+      - @poll.answer_possibilities.each do |answer_possibility|
+        %tr
+          %td= answer_possibility.value 
+          %td= answer_possibility.answers.count 
 
 - else 
   %h3= "Diese Umfrage liegt ausserhalb des Abstimmungszeitraum (Start: #{@poll.start_date}, Ende: #{@poll.exp_date})"

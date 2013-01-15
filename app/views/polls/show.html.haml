@@ -22,7 +22,7 @@
 
 .clear
 
-- if @poll.start_date >= Date.today
+- if @poll.start_date > Date.today
   %h3="Noch keine Daten vorhanden" 
   %p="Der Zeitraum zum Abstimmen für diese Umfrage hat noch nicht begonnen (Start: #{@poll.start_date})"
 
