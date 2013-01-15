@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 
 
 	def index		
-	 @polls = Poll.where(creator_id: current_creator.id).group("category_id")
+	 @polls = Poll.where(creator_id: current_creator.id)
 	end
 
 	def edit
@@ -16,6 +16,24 @@ class PollsController < ApplicationController
 
 	  respond_to do |format|
 	    if @poll.update_attributes(params[:poll])
+
+        answer_possibilities = params[:poll][:answer_possibilities_attributes]
+        answer_possibilities.each do |k,v|
+          unless v.fetch("_destroy").eql?("1")
+            answerPossibility=nil
+            if v.key?("id")
+              answerPossibility = @poll.answer_possibilities.find(v.fetch("id"))
+            else          
+              answerPossibility = AnswerPossibility.new
+              answerPossibility.poll_id = @poll.id
+            end
+            answerPossibility.value=v.fetch("value")
+            answerPossibility.save
+          end
+        end
+ 
+
+
 	      format.html { redirect_to polls_path, notice: 'Poll was successfully updated.' }
 	      format.json { head :no_content }
 	    else

@@ -1,5 +1,4 @@
- <% power=true if @poll.start_date > Date.today or @poll.answers.count <= 0 
- binding.pry%>
+ <% power=true if @poll.start_date > Date.today or @poll.answers.count <= 0 %>
  <%= semantic_form_for [@poll], :url => url_for(:controller => 'polls', :action => "#{action_path}"), :builder => ActiveAdmin::FormBuilder do |f| 
     
       puts f.object.errors.inspect
@@ -23,16 +22,26 @@
         f.input :chart_type,  :as => :select,      :collection => ["line", "line_xy", "sparkline", "scatter", "bar", "venn", "pie",  "pie_3d", "google meter"]
       end
 
-    if power
-      f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
-        answers.inputs :answer_possibilities do
-         answers.input :value           
-         answers.input :"_destroy", :as => :boolean, :label=>"Löschen?" 
-        end
-      end   
-    end
+    if action_path=="update" && power 
+
+        f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
+          answers.inputs :answer_possibilities do
+           answers.input :value           
+           answers.input :"_destroy", :as => :boolean, :label=>"Löschen?" 
+          end
+        end   
+  
+    elsif power 
+
+        f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
+          answers.inputs :answer_possibilities do
+           answers.input :value           
+          end
+        end   
+  
+    end 
         
-      f.actions do 
+    f.actions do 
         f.action :submit, :as => :button, :label => "Speichern"
         f.action :cancel, :as => :link, :label => "Abbrechen"
       end

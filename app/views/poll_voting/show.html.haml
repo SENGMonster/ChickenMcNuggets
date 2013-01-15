@@ -3,7 +3,6 @@
 
 - if @poll.exp_date >= Date.today and @poll.start_date <= Date.today
   %img{ src: @chart_url } 
-  %img{ src: @bar_url } 
 
   %table{:"data-role" => "table", :id => "poll_result_table", :"data-mode"=>"reflow"}
     %thead
