@@ -100,20 +100,26 @@ class PollsController < ApplicationController
   def show
     ##https://github.com/mattetti/googlecharts
     @poll=Poll.find(params[:id])
-    @resultdata={}
-    uanswers=@poll.answers.group(:guid).count
-    @unique_answers=uanswers.count    
+    if @poll.creator_id== current_creator.id 
 
-    data=[]
-    labels=[]
-    @poll.answer_possibilities.each do |p|
-      @resultdata[p.value] = p.answers.count
-      data << p.answers.count
-      labels << p.value + " (" + p.answers.count.to_s + ")"
+      @resultdata={}
+      uanswers=@poll.answers.group(:guid).count
+      @unique_answers=uanswers.count    
+
+      data=[]
+      labels=[]
+      @poll.answer_possibilities.each do |p|
+        @resultdata[p.value] = p.answers.count
+        data << p.answers.count
+        labels << p.value + " (" + p.answers.count.to_s + ")"
+      end
+      on_class = "Gchart"
+      @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '500x300',:data => data, :labels => labels )
+
+    else
+      redirect_to polls_path, notice: "Die Umfrage kann nur vom Ersteller eingesehen werden."
     end
-    on_class = "Gchart"
-    @chart_url= on_class.constantize.send(@poll.chart_type, :title => @poll.title, :size => '500x300',:data => data, :labels => labels )
-      
+        
   end
 
   def tinyfy(newurl)
