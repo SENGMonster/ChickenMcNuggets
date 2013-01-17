@@ -7,7 +7,7 @@
       f.inputs do
       #f.form_buffers.last << "<legend><span class='title_app_profil' id='user'><a href='#navigation'>User</a></span></legend>".html_safe
           f.input :poll_type
-          f.input :category
+          f.input :category, :selected => '1'
           f.input :title
           f.input :question
           f.input :start_date

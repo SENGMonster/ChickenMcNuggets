@@ -3,4 +3,6 @@ class Answer < ActiveRecord::Base
   belongs_to :answer_possibility
   belongs_to :poll
   belongs_to :comment
+
+  #validates :value, :presence => true
 end

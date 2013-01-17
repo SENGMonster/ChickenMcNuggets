@@ -11,3 +11,4 @@ PollType.create(name: 'multiple choice')
 
 AdminUser.create(password: 'password', password_confirmation: 'password', email: 'admin@example.com')
 Creator.create(password: 'password', password_confirmation: 'password', email: 'meier@example.com')
+Category.create(name: 'FH Allgemein')
