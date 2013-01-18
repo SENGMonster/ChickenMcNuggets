@@ -4,5 +4,5 @@ class Answer < ActiveRecord::Base
   belongs_to :poll
   belongs_to :comment
 
-  #validates :value, :presence => true
+  validates :value, :presence => true
 end
