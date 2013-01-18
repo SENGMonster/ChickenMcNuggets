@@ -1,6 +1,6 @@
 require 'gchart'
 class PollVotingController < ApplicationController
-  #before_filter :check_session, :only => [:vote]
+  before_filter :check_session, :only => [:vote]
   before_filter :check_exp_date, :only => [:vote]
 
  
