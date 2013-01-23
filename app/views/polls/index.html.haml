@@ -17,15 +17,15 @@
     .poll_preview_chart_type
       = poll_creation.chart_type
     .poll_preview_tinyurl
-      =  link_to poll_creation.shorturl, "/poll_voting/vote?id=#{poll_creation.id}"
+      =  link_to poll_creation.shorturl, "#{poll_creation.shorturl}"
 
     %ul.poll_index_actions
       %li
-        %a.icon_button{href: "/polls/#{poll_creation.id}"}
+        %a.icon_button{href: "/polls/#{poll_creation.title}"}
           =image_tag('pie_chart.png')
           %span="ansehen"
       %li
-        %a.icon_button{href: "/poll_voting/show?id=#{poll_creation.id}"}
+        %a.icon_button{href: "/poll_voting/show?id=#{poll_creation.title}"}
           =image_tag('pie_chart.png')
           %span="mobile Ansicht"
       %li
@@ -33,7 +33,7 @@
           =image_tag('edit.png')
           %span="bearbeiten"
       %li
-        %a.icon_button{:href => "/polls/#{poll_creation.id}", :"data-confirm" => "Sicher?", :"data-method" => :delete}
+        %a.icon_button{:href => "/polls/#{poll_creation.title}", :"data-confirm" => "Sicher?", :"data-method" => :delete}
           =image_tag('bin.png')
           %span="löschen"
 
