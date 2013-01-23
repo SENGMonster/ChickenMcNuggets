@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 2012271084411122) do
     t.string   "chart_type"
     t.date     "start_date"
     t.string   "shorturl"
+    t.string   "slug"
   end
 
 end
