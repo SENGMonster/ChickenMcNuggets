@@ -61,7 +61,7 @@ class PollsController < ApplicationController
 	def create
 	  @poll = Poll.new(params[:poll])
 	  @poll.creator_id = current_creator.id
-	  #@poll.shorturl = tinyfy("http://0.0.0.0:3000/polls/#{@poll.id}")
+	  @poll.shorturl = tinyfy("http://0.0.0.0:3000/polls/#{@poll.title}")
 	
 
 	  respond_to do |format|

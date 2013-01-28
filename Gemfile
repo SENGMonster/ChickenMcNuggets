@@ -15,6 +15,9 @@ gem 'paperclip'
 gem 'multi_json'
 gem 'capistrano'
 
+gem 'friendly_id'
+
+
 group :production do
   gem 'mysql2'
 end

@@ -1,5 +1,9 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :title, :question, :exp_date, :creator_id, :poll_type_id, :category_id, :answer_possibilities_attributes, :chart_type, :start_date
+  attr_accessible :title, :question, :exp_date, :creator_id, :poll_type_id, :category_id, :answer_possibilities_attributes, :chart_type, :start_date, :slug
+  
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   has_many :answer_possibilities, :dependent => :destroy
   belongs_to :poll_type
   belongs_to :category
