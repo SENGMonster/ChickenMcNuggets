@@ -33,7 +33,7 @@
           =image_tag('edit.png')
           %span="bearbeiten"
       %li
-        %a.icon_button{:href => "/polls/#{poll_creation.title}", :"data-confirm" => "Sicher?", :"data-method" => :delete}
+        %a.icon_button{:href => "/polls/#{poll_creation.id}", :"data-confirm" => "Sicher?", :"data-method" => :delete}
           =image_tag('bin.png')
           %span="löschen"
 

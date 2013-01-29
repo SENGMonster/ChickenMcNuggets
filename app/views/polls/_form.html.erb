@@ -22,6 +22,7 @@
         f.input :chart_type,  :as => :select,      :collection => ["line", "line_xy", "sparkline", "scatter", "bar", "venn", "pie",  "pie_3d", "google meter"]
       end
 
+    
     if action_path=="update" && power 
 
         f.has_many :answer_possibilities , label: "Neue Antwortmöglichkeit" do |answers|
