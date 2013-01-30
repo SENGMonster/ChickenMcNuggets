@@ -52,6 +52,7 @@ group :development do
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'pry'
+  gem 'rails_best_practices'
 end
 
 gem 'jquery-rails'

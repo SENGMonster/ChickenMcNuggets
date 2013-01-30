@@ -22,6 +22,7 @@ class PollVotingController < ApplicationController
   def vote
      @poll=Poll.find(params[:id])
      @answer = Answer.new     
+     check_exp_date
   end
 
   def process_multiple_vote  
@@ -45,7 +46,7 @@ class PollVotingController < ApplicationController
     end
 
     session[@poll.id] = 1
-    redirect_to :action => "show", :id => @poll.id
+    redirect_to :action => "show", :id => @poll.slug
     
   end
 
@@ -69,7 +70,7 @@ class PollVotingController < ApplicationController
 
     respond_to do |format|
       if answer.save
-        format.html { redirect_to :action => "show", :id => @poll.id }
+        format.html { redirect_to :action => "show", :id => @poll.slug }
         format.json { render json: @poll, status: :created, location: @poll }
       else
         format.html { render action: "vote" }
@@ -81,15 +82,15 @@ class PollVotingController < ApplicationController
   def check_session    
     @poll=Poll.find(params[:id])
     if session[@poll.id]
-      redirect_to :action => "show", :id => @poll.id
+      redirect_to :action => "show", :id => @poll.slug
     end
   end
 
   def check_exp_date
     @poll=Poll.find(params[:id])
     current_date = Date.today
-    if @poll.exp_date <= current_date
-      redirect_to :action => "show", :id => @poll.id
+    if @poll.exp_date < current_date
+      redirect_to :action => "show", :id => @poll.slug
     end
     
 

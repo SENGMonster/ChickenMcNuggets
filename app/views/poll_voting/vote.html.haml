@@ -1,13 +1,17 @@
 %h1.title= @poll.title
 %h2= @poll.question
 
-- if @poll.poll_type.name == "single choice"
-  = render 'single_choice_form' 
 
-- if @poll.poll_type.name == "multiple choice"  
-  = render 'multiple_choice_form' 
+-if @poll.start_date > Date.today
+  %p="Der Abstimmungszeitraum für diese Umfrage hat noch nicht begonnen"
+-else
+  - if @poll.poll_type.name == "single choice"
+    = render 'single_choice_form' 
 
-- if @poll.poll_type.name == "open"  
-  = render 'open_form' 
+  - if @poll.poll_type.name == "multiple choice"  
+    = render 'multiple_choice_form' 
+
+  - if @poll.poll_type.name == "open"  
+    = render 'open_form' 
 
 
