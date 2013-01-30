@@ -61,10 +61,12 @@ class PollsController < ApplicationController
 	def create
 	  @poll = Poll.new(params[:poll])
 	  @poll.creator_id = current_creator.id	
-    @poll.shorturl = "#{request.protocol}#{request.host_with_port}/poll_voting/vote/#{@poll.slug}"
+
 
 	  respond_to do |format|
 	    if @poll.save
+
+        @poll.shorturl = "#{request.protocol}#{request.host_with_port}/poll_voting/vote/#{@poll.slug}"
 
       #@poll.shorturl = tinyfy("#{request.protocol}#{request.host_with_port}/poll_voting/vote/#{@poll.slug}")
       
