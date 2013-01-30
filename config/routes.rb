@@ -17,8 +17,9 @@ Chickenmcnuggets::Application.routes.draw do
 
 
   get "poll_voting/show"
-
+    match "/poll_voting/show/:id" => "poll_voting#show"
   get "poll_voting/vote"
+  match "/poll_voting/vote/:id" => "poll_voting#vote"
 
   post "poll_voting/process_single_vote"
   

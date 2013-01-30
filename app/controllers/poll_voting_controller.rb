@@ -25,7 +25,7 @@ class PollVotingController < ApplicationController
   end
 
   def process_multiple_vote  
-    @poll = Poll.find(params[:poll])
+    @poll=Poll.find(params[:poll])
     answer_ids = params[:answer_ids]
    
     n_guid = SecureRandom.uuid
@@ -78,7 +78,7 @@ class PollVotingController < ApplicationController
     end    
   end
   
-  def check_session
+  def check_session    
     @poll=Poll.find(params[:id])
     if session[@poll.id]
       redirect_to :action => "show", :id => @poll.id

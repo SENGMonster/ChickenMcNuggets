@@ -17,15 +17,15 @@
     .poll_preview_chart_type
       = poll_creation.chart_type
     .poll_preview_tinyurl
-      =  link_to poll_creation.shorturl, "#{poll_creation.shorturl}"
+      =  link_to poll_creation.shorturl, poll_creation.shorturl
 
     %ul.poll_index_actions
       %li
-        %a.icon_button{href: "/polls/#{poll_creation.title}"}
+        %a.icon_button{href: "/polls/#{poll_creation.slug}"}
           =image_tag('pie_chart.png')
           %span="ansehen"
       %li
-        %a.icon_button{href: "/poll_voting/show?id=#{poll_creation.title}"}
+        %a.icon_button{href: "/poll_voting/show/#{poll_creation.slug}"}
           =image_tag('pie_chart.png')
           %span="mobile Ansicht"
       %li

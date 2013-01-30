@@ -10,9 +10,9 @@ describe PollsController, :type => :request do
   #login_creator
 
   #let(:authed_user) { create_logged_in_user }
-  let(:authed_user) { create_logged_in_user }
+  #let(:authed_user) { create_logged_in_user }
    before (:each) do
-     #@poll_single_choice =Factory.create(:poll_single, :creator_id=>@creator1.id)
+     
      @user = FactoryGirl.create(:benutzer_1)
    end
 
