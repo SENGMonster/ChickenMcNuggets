@@ -7,7 +7,7 @@
 - if session[@poll.id]
   %h3="Für diese Umfrage hast du schon abgestimmt."
 
-%img{ src: @chart_url } 
+%img{ src: @chart_url, id: 'google_img' } 
 
 %table.table-stripe{:"data-role" => "table", :id => "poll_result_table", :"data-mode"=>"reflow"}
   %thead

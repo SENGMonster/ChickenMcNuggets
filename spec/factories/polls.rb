@@ -8,13 +8,13 @@ FactoryGirl.define do
     chart_type "pie"
     category  {FactoryGirl.create(:category)}
     
-    trait :answer_possibilities do
+
       after(:create) do |poll|
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
+        poll.save
       end
-    end
   end
 
   factory :poll_multiple, class: Poll do 
@@ -26,13 +26,14 @@ FactoryGirl.define do
     chart_type "pie"
     category  {FactoryGirl.create(:category)}
     
-    trait :answer_possibilities do
+
       after(:create) do |poll|
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
         poll.answer_possibilities << FactoryGirl.create(:answer_possibility)
+        poll.save
       end
-    end
+
   end
 
   factory :answer_possibility do
